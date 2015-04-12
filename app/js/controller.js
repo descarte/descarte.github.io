@@ -17,26 +17,23 @@ angular.module('DescarteOrg.controllers', [])
 	$scope.filterChanged = function(){
 		$rootScope.$broadcast('filterchange');
 	}
-
-	$scope.new = function() {
-		$rootScope.$broadcast('new-descarte', { spot: 1 });
-	};
 }])
 
 .controller('MapController', ['$rootScope', '$scope', 'ApiFactory','FiltroService', function ($rootScope, $scope, ApiFactory, FiltroService) {
 	$scope.listaLocais = {};
 	
-	$scope.center = {
+	$rootScope.center = {
 		lat: -30.0330600,
 		lng: -51.2300000,
-		zoom: 11
+    zoom: 11,
+		maxZoom: 11
 	};
 	
 	$scope.defaults = {
 		maxZoom: 20,
 		minZoom: 7,
-		center: $scope.center,
 		zoomControlPosition: 'topright',
+		center: $rootScope.center,
 		attributionControl: false
 	};
 	
@@ -44,8 +41,10 @@ angular.module('DescarteOrg.controllers', [])
 
 	function filtrarLista(){
 		angular.forEach($scope.listaLocais,function(item){
-			$scope.locaisFiltrados[item.id]=estaSpotVisivel(item)?
-				item:undefined;
+      $scope.locaisFiltrados[item.id] = {};
+      if(estaSpotVisivel(item)){
+			   $scope.locaisFiltrados[item.id]=item;
+      }
 		});
 	}
 	function estaSpotVisivel(spot){
@@ -104,8 +103,8 @@ angular.module('DescarteOrg.controllers', [])
 	});
 
 
-	$scope.new = function() {
-		$rootScope.$broadcast('new-descarte', { lat: $scope.center.lat, lng: $scope.center.lng});
+	$rootScope.new = function() {
+		$rootScope.$broadcast('new-descarte', { lat: $rootScope.center.lat, lng: $rootScope.center.lng});
 	};
 
 	$scope.$on('filterchange', function(e, args) {
@@ -165,7 +164,14 @@ angular.module('DescarteOrg.controllers', [])
 			console.log(error);
 		});
 	});
-
+	function validacaoPost(){
+		return $scope.title &&
+				$scope.name &&
+				$scope.email &&
+				$scope.description &&
+				$scope.SituationId &&
+				Object.keys($scope.material.ids).length > 0; 
+	};
 	$scope.save = function(){
 		var d = {
 			title: $scope.title,
@@ -177,8 +183,11 @@ angular.module('DescarteOrg.controllers', [])
 			SituationId: $scope.SituationId,
 			Materials: Object.keys($scope.material.ids)
 		};
+		if(!validacaoPost())
+			return;
 		ApiFactory.discard(d).success(function(discard) {
 			$scope.discard = discard;
+			SharedState.turnOff("uiSidebarRight")
 		}).error(function (error) {
 			console.log(error);
 		});
