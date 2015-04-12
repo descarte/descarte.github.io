@@ -1,0 +1,90 @@
+@font-face {
+    font-family: Blogger;
+    src: url("/app/fonts/blogger_sans-webfont.eot");
+    src: url("/app/fonts/blogger_sans-webfont.eot?#iefix") format('embedded-opentype'),
+         url("/app/fonts/blogger_sans-webfont.woff") format('woff'),
+         url("/app/fonts/blogger_sans-webfont.ttf") format('truetype'),
+         url("/app/fonts/blogger_sans-webfont.svg#Blogger") format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Blogger;
+    src: url("/app/fonts/blogger_sans-bold-webfont.eot");
+    src: url("/app/fonts/blogger_sans-bold-webfont.eot?#iefix") format('embedded-opentype'),
+         url("/app/fonts/blogger_sans-bold-webfont.woff") format('woff'),
+         url("/app/fonts/blogger_sans-bold-webfont.ttf") format('truetype'),
+         url("/app/fonts/blogger_sans-bold-webfont.svg#Blogger") format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+.app{
+    background: transparent;
+}
+
+.navbar-absolute-top{
+    background: linear-gradient(to bottom, rgba(255,255,255,.7) 0%, rgba(255,255,255,0) 100%);
+    border: none;
+
+    .btn, .btn-navbar{
+        text-transform: none;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-top: 10px;
+        box-shadow: 0 2px 3px rgba(0,0,0,.3);
+    }
+}
+
+.navbar-app .btn-group{
+    margin-left: 40px;
+}
+
+.has-navbar-top .app-body {
+  padding-top: 0;
+}
+
+.navbar-brand{
+    height: auto;
+}
+
+.navbar-brand img{
+  max-width: 280px;
+  margin: -10px auto 0;
+}
+
+html,
+body,
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6{
+    font-family: Blogger, sans-serif !important;
+}
+
+.sidebar{
+    background: transparent;
+
+    .scrollable-content{
+        padding: 2em;
+    }
+
+    h1 small{
+        display: block;
+    }
+}
+
+.row{
+    overflow: hidden;
+    margin-bottom: 2em;
+}
+
+.sidebar .column{
+    width: 50%;
+    float: left;
+    padding: 0 15px;
+}
