@@ -1,3 +1,7 @@
 .leaflet-control-layers.leaflet-control {
   display: none;
 }
+
+.sidebar-right h1{
+  padding: 5px 10px 0px;
+}
