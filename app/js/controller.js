@@ -102,9 +102,9 @@ angular.module('DescarteOrg.controllers', [])
 	}).error(function (error) {
 		console.log(error);
 	});
-	ApiFactory.discard().success(function(spots) {
+	ApiFactory.discards().success(function(spots) {
 		spots.forEach(function(e){
-			e.message = '<b>'+ e.name +'</b><br/>'+ e.Type.name +'<br/><a ui-toggle="uiSidebarRight" href="javascript:void(0);">Mais informações</a>';
+			e.message = '<b>'+ e.name +'</b><br/><a ui-toggle="uiSidebarRight" href="javascript:void(0);">Mais informações</a>';
 			e.layer="descartes";
 			e.icon = {
 				iconUrl: iconePath+"disposal.png"
