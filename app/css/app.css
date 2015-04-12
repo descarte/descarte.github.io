@@ -6,6 +6,10 @@
   padding: 5px 10px 0px;
 }
 
+.scrollable-footer .list-group {
+	margin-bottom: 0px;
+}
+
 @media (max-width: 470px) {
 	.navbar-brand img{
 		max-width: 180px;
