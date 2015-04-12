@@ -64,14 +64,12 @@
 						</div>
 						<div class="form-group has-success has-feedback">
 							<label>Classificação</label>
-							<div style="padding-left: 30px;">
-								<span ng-repeat="m in materials">
-									<label class="checkbox" for="{{category.id}}">
-										<input type="checkbox" ng-model="material.ids[m.id]" name="group" id="{{m.id}}" />
-										{{m.name}}
-									</label>
-								</span>
-							</div>
+							<p ng-repeat="m in materials">
+								<label class="checkbox checkbox--materials" for="{{category.id}}">
+									<input type="checkbox" ng-model="material.ids[m.id]" name="group" id="{{m.id}}" />
+									{{m.name}}
+								</label>
+							</p>
 						</div>
 						<div class="form-group has-success has-feedback">
 							<label>Observação</label>
