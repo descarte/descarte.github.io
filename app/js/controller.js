@@ -17,16 +17,12 @@ angular.module('DescarteOrg.controllers', [])
 	$scope.filterChanged = function(){
 		$rootScope.$broadcast('filterchange');
 	}
-
-	$scope.new = function() {
-		$rootScope.$broadcast('new-descarte', { spot: 1 });
-	};
 }])
 
 .controller('MapController', ['$rootScope', '$scope', 'ApiFactory','FiltroService', function ($rootScope, $scope, ApiFactory, FiltroService) {
 	$scope.listaLocais = {};
 	
-	$scope.center = {
+	$rootScope.center = {
 		lat: -30.0330600,
 		lng: -51.2300000,
 		zoom: 11
@@ -35,7 +31,7 @@ angular.module('DescarteOrg.controllers', [])
 	$scope.defaults = {
 		maxZoom: 20,
 		minZoom: 7,
-		center: $scope.center,
+		center: $rootScope.center,
 		attributionControl: false
 	};
 	
@@ -103,8 +99,8 @@ angular.module('DescarteOrg.controllers', [])
 	});
 
 
-	$scope.new = function() {
-		$rootScope.$broadcast('new-descarte', { lat: $scope.center.lat, lng: $scope.center.lng});
+	$rootScope.new = function() {
+		$rootScope.$broadcast('new-descarte', { lat: $rootScope.center.lat, lng: $rootScope.center.lng});
 	};
 
 	$scope.$on('filterchange', function(e, args) {
