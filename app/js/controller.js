@@ -148,7 +148,7 @@ angular.module('DescarteOrg.controllers', [])
 	});
 }])
 
-.controller('SidebarRightController', ['$scope', 'ApiFactory', function ($scope, ApiFactory) {
+.controller('SidebarRightController', ['$scope', 'ApiFactory', 'SharedState', function ($scope, ApiFactory, SharedState) {
 	$scope.spot;
 	$scope.address;
 
