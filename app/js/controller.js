@@ -105,11 +105,12 @@ angular.module('DescarteOrg.controllers', [])
 	});
 	ApiFactory.discards().success(function(spots) {
 		spots.forEach(function(e){
-			e.message = '<b>'+ e.name +'</b><br/><a ui-toggle="uiSidebarRight" href="javascript:void(0);">Mais informações</a>';
+			e.message = '<b>'+ e.title +'</b><br/><a ui-toggle="uiSidebarRight" href="javascript:void(0);">Mais informações</a>';
 			e.layer="descartes";
 			e.icon = {
 				iconUrl: iconePath+"disposal.png"
 			};
+			e.MarkerType = 'descarte';
 			$scope.locaisFiltrados[e.id] = e; 
 		});
 	}).error(function (error) {
@@ -123,7 +124,7 @@ angular.module('DescarteOrg.controllers', [])
 		$scope.layers.overlays.descartes.visible=n;
 	})
 	$scope.$on('leafletDirectiveMarker.click', function(e, args) {
-		$rootScope.$broadcast('detail-id', { spot: $scope.listaLocais[args.markerName] });
+		$rootScope.$broadcast('detail-id', { spot: $scope.locaisFiltrados[args.markerName] });
 	});
 
 

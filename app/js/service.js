@@ -57,4 +57,14 @@ angular.module('DescarteOrg.services', [])
 	}).error(function (error) {
 		console.log(error);
 	});
+
+	self.filtrosSituation = {};
+	var promisseSituations = ApiFactory.situations().success(function(result){
+		angular.forEach(result,function(item){
+			item.check=true;
+			self.filtrosSituation[item.id]=item;
+		});
+	}).error(function (error) {
+		console.log(error);
+	});
 });
