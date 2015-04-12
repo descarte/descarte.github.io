@@ -96,6 +96,7 @@ angular.module('DescarteOrg.controllers', [])
 			e.icon = {
 				iconUrl: iconePath+ e.Type.id + ".png"
 			};
+			e.MarkerType = 'spot';
 			$scope.listaLocais[e.id] = e;
 			$scope.locaisFiltrados[e.id+"s"] = e; 
 		});
@@ -187,6 +188,7 @@ angular.module('DescarteOrg.controllers', [])
 			console.log(error);
 		});
 	});
+	
 	function validacaoPost(){
 		return $scope.title &&
 				$scope.name &&
