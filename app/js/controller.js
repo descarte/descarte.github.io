@@ -36,6 +36,7 @@ angular.module('DescarteOrg.controllers', [])
 		maxZoom: 20,
 		minZoom: 7,
 		center: $scope.center,
+		zoomControlPosition: 'topright',
 		attributionControl: false
 	};
 	

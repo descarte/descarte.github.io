@@ -8058,17 +8058,17 @@ h6,
 }
 @media (min-width: 768px) {
   .sidebar-left {
-    width: 688px;
+    width: 628px;
   }
   .sidebar-right {
-    width: 688px;
+    width: 628px;
   }
   .sidebar-left-in .app {
-    -webkit-transform: translate3d(688px, 0, 0);
-    transform: translate3d(688px, 0, 0);
+    -webkit-transform: translate3d(628px, 0, 0);
+    transform: translate3d(628px, 0, 0);
   }
   .sidebar-right-in .app {
-    -webkit-transform: translate3d(-688px, 0, 0);
-    transform: translate3d(-688px, 0, 0);
+    -webkit-transform: translate3d(-628px, 0, 0);
+    transform: translate3d(-628px, 0, 0);
   }
 }
