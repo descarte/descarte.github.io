@@ -105,7 +105,7 @@ angular.module('DescarteOrg.controllers', [])
 	});
 	ApiFactory.discards().success(function(spots) {
 		spots.forEach(function(e){
-			e.message = '<b>'+ e.title +'</b><br/><a ui-toggle="uiSidebarRight" href="javascript:void(0);">Mais informações</a>';
+			e.message = '<b>'+ e.title +'</b><br/>'+ e.name +'<br/><a ui-toggle="uiSidebarRight" href="javascript:void(0);">Mais informações</a>';
 			e.layer="descartes";
 			e.icon = {
 				iconUrl: iconePath+"disposal.png"
