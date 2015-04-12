@@ -103,7 +103,9 @@ angular.module('DescarteOrg.controllers', [])
 			e.message = '<b>'+ e.name +'</b><br/>'+ e.Type.name +'<br/><a ui-toggle="uiSidebarRight" href="javascript:void(0);">Mais informações</a>';
 			e.layer="spots";
 			e.icon = {
-				iconUrl: iconePath+ e.Type.id + ".png"
+				iconUrl: iconePath+ e.Type.id + ".png",
+				iconSize:     [33, 50],
+				popupAnchor: [-4, -24]
 			};
 			e.MarkerType = 'spot';
 			$scope.listaLocais[e.id] = e;
@@ -118,7 +120,9 @@ angular.module('DescarteOrg.controllers', [])
 			e.message = '<b>'+ e.title +'</b><br/>'+ e.name +'<br/><a ui-toggle="uiSidebarRight" href="javascript:void(0);">Mais informações</a>';
 			e.layer="descartes";
 			e.icon = {
-				iconUrl: iconePath+"disposal.png"
+				iconUrl: iconePath+"disposal.png",
+				iconSize:     [33, 50],
+				popupAnchor: [-4, -24]
 			};
 			e.MarkerType = 'descarte';
 			$scope.locaisFiltrados[e.id] = e;
