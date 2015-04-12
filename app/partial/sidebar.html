@@ -9,6 +9,12 @@
 					<div><label><input type="checkbox" ng-model="descartes" /> Descartes</label></div>
 				</div>
 				<div class="row">
+					<h4>Status</h4>
+					<div ng-repeat="(id, type) in FiltroService.filtrosType">
+						<label><input type="checkbox" ng-model="type.check" /> {{type.name}}</label>
+					</div>
+				</div>
+				<div class="row">
 					<h4>Tipo de coleta</h4>
 					<div ng-repeat="(id, type) in FiltroService.filtrosType">
 						<label><input type="checkbox" ng-model="type.check" /> {{type.name}}</label>
