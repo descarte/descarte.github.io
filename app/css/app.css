@@ -10,12 +10,6 @@
 	margin-bottom: 0px;
 }
 
-@media (max-width: 470px) {
-	.navbar-brand img{
-		max-width: 180px;
-	}
-}
-
 .legend{
     text-align: right;
     margin-right: 1em;
@@ -42,4 +36,38 @@
 
 .checkbox--materials{
     padding-left: 30px;
+}
+
+@media (max-width: 470px) {
+    .navbar-brand img{
+        max-width: 180px;
+    }
+
+    .legend-list{
+        padding: 0;
+    }
+
+    .info-label{
+        width: 32%;
+        padding: 0;
+        margin: 0 0 0.5em;
+    }
+
+    .leaflet-control-zoom{
+        display: none;
+    }
+
+    .leaflet-bottom.leaflet-right{
+        left: 0;
+    }
+}
+
+.navbar-absolute-top .btn-group{
+    margin-left: 10px;
+}
+
+@media (max-width: 680px) {
+    .navbar-absolute-top .btn-group{
+        margin-top: 65px;
+    }
 }
