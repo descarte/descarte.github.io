@@ -1,23 +1,22 @@
-<div class="scrollable" ng-controller="MapController">  
+<div class="scrollable" ng-controller="MapController">
 	<div class="scrollable-content">
 		<leaflet markers="locaisFiltrados"
-				 layers="layers" 
+				 layers="layers"
 				 style="height:100%;width:100%;"
 				 center="center"
 				 defaults = "defaults">
 		</leaflet>
 	</div>
-	<div class="leaflet-bottom leaflet-right" style="margin-bottom: 20px;">
-		<div class="legend leaflet-control">Legenda <div class="legendcircle"></div>
-		<span class="legend-header"><b>Tipo de Coleta</b></span>
-		<div class="outline">
-			<i style="background:#7fc97f"></i>
-		</div>
-		<div ng-repeat="(id, type) in FiltroService.filtrosType">
-			<div class="info-label">{{type.name}}</div>
-			<div class="outline">
-				<img ng-src={{"/app/image/markers/"+id+".png"}} height="20%" width="20%">
-			</div>
-		</div>
+	<div class="leaflet-bottom leaflet-right">
+		<p class="legend">Legenda:
+			<strong>Tipo de Coleta</strong>
+		</p>
+
+		<ul class="legend-list">
+			<li class="info-label" ng-repeat="(id, type) in FiltroService.filtrosType">
+				<img ng-src={{"/app/image/markers/"+id+".png"}}>
+				{{type.name}}
+			</li>
+		</ul>
 	</div>
 </div>

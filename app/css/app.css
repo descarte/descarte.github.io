@@ -3,11 +3,43 @@
 }
 
 .sidebar-right h1{
-  padding: 5px 10px 0px;
+  padding: 1em 0.75em 0px;
+}
+
+.scrollable-footer .list-group {
+	margin-bottom: 0px;
 }
 
 @media (max-width: 470px) {
 	.navbar-brand img{
 		max-width: 180px;
 	}
+}
+
+.legend{
+    text-align: right;
+    margin-right: 1em;
+}
+
+.legend-list{
+    margin-bottom: 0;
+    padding: 0 0.5em 0.5em 0.5em;
+    background: linear-gradient(to top, rgba(255,255,255,.7) 0%, rgba(255,255,255,0) 100%);
+}
+
+.info-label{
+    display: inline-block;
+    list-style: none;
+    text-align: center;
+    margin: 0 0.5em;
+}
+
+.info-label img{
+    display: block;
+    margin: auto;
+    max-width: 20px;
+}
+
+.checkbox--materials{
+    padding-left: 30px;
 }
