@@ -34,10 +34,10 @@
 
 			<div class="navbar navbar-app navbar-absolute-top">
 				<div class="navbar-brand navbar-brand-center" ui-yield-to="title">
-					<img src="/app/image/logo.png" alt="">
+					<img src="/app/image/logo.png" alt="" class="img-responsive">
 				</div>
 
-				<div class="btn-group pull-left">
+				<div class="btn-group pull-left" style="margin-left: 10px;">
 					<div ui-toggle="uiSidebarLeft" class="btn sidebar-toggle">
 						Filtrar
 					</div>
@@ -56,7 +56,6 @@
 				</div>
 				<div class="app-content">
 					<ng-view></ng-view>
-					<div style="position: absolute;">Centeno</div>
 				</div>
 			</div>
 		</div>

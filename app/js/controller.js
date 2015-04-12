@@ -32,6 +32,7 @@ angular.module('DescarteOrg.controllers', [])
 	$scope.defaults = {
 		maxZoom: 20,
 		minZoom: 7,
+		zoomControlPosition: 'topright',
 		center: $rootScope.center,
 		attributionControl: false
 	};
@@ -39,12 +40,9 @@ angular.module('DescarteOrg.controllers', [])
 	$scope.locaisFiltrados = {};
 
 	function filtrarLista(){
-		angular.forEach($scope.listaLocais,function(item){
-      $scope.locaisFiltrados[item.id] = {};
-      if(estaSpotVisivel(item)){
-			   $scope.locaisFiltrados[item.id]=item;
-      }
-		});
+	  angular.forEach($scope.listaLocais,function(item){
+		$scope.locaisFiltrados[item.id+"s"]=estaSpotVisivel(item)?item:undefined;
+	  });
 	}
 	function estaSpotVisivel(spot){
 		return $scope.FiltroService.filtrosType[spot.Type.id].check 
@@ -73,6 +71,14 @@ angular.module('DescarteOrg.controllers', [])
 				"layerOptions":{
 					"maxClusterRadius":15
 				}      			
+			},
+			"descartes": {
+				"name": "descartes",
+				"type": "markercluster",
+				"visible": true,
+				"layerOptions":{
+					"maxClusterRadius":15
+				}      			
 			}
 		}
 	};
@@ -91,12 +97,30 @@ angular.module('DescarteOrg.controllers', [])
 				iconUrl: iconePath+ e.Type.id + ".png"
 			};
 			$scope.listaLocais[e.id] = e;
+			$scope.locaisFiltrados[e.id+"s"] = e; 
+		});
+	}).error(function (error) {
+		console.log(error);
+	});
+	ApiFactory.discard().success(function(spots) {
+		spots.forEach(function(e){
+			e.message = '<b>'+ e.name +'</b><br/>'+ e.Type.name +'<br/><a ui-toggle="uiSidebarRight" href="javascript:void(0);">Mais informações</a>';
+			e.layer="descartes";
+			e.icon = {
+				iconUrl: iconePath+"disposal.png"
+			};
 			$scope.locaisFiltrados[e.id] = e; 
 		});
 	}).error(function (error) {
 		console.log(error);
 	});
 
+	$scope.$watch(function(){return FiltroService.pontos;},function(n){
+		$scope.layers.overlays.spots.visible=n;
+	})
+	$scope.$watch(function(){return FiltroService.descartes;},function(n){
+		$scope.layers.overlays.descartes.visible=n;
+	})
 	$scope.$on('leafletDirectiveMarker.click', function(e, args) {
 		$rootScope.$broadcast('detail-id', { spot: $scope.listaLocais[args.markerName] });
 	});
