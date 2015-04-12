@@ -163,7 +163,14 @@ angular.module('DescarteOrg.controllers', [])
 			console.log(error);
 		});
 	});
-
+	function validacaoPost(){
+		return $scope.title &&
+				$scope.name &&
+				$scope.email &&
+				$scope.description &&
+				$scope.SituationId &&
+				Object.keys($scope.material.ids).length > 0; 
+	};
 	$scope.save = function(){
 		var d = {
 			title: $scope.title,
@@ -175,8 +182,11 @@ angular.module('DescarteOrg.controllers', [])
 			SituationId: $scope.SituationId,
 			Materials: Object.keys($scope.material.ids)
 		};
+		if(!validacaoPost())
+			return;
 		ApiFactory.discard(d).success(function(discard) {
 			$scope.discard = discard;
+			SharedState.turnOff("uiSidebarRight")
 		}).error(function (error) {
 			console.log(error);
 		});
