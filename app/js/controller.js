@@ -41,7 +41,10 @@ angular.module('DescarteOrg.controllers', [])
 
 	function filtrarLista(){
 	  angular.forEach($scope.listaLocais,function(item){
-		$scope.locaisFiltrados[item.id+"s"]=estaSpotVisivel(item)?item:undefined;
+	  	$scope.locaisFiltrados[item.id+"s"] = {};
+	  	if(estaSpotVisivel(item)){
+			$scope.locaisFiltrados[item.id+"s"]=item;
+		}
 	  });
 	}
 	function estaSpotVisivel(spot){
