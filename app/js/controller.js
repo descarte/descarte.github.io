@@ -84,7 +84,7 @@ angular.module('DescarteOrg.controllers', [])
 		});
 	}
 	var iconePath = "/app/image/markers/"
-	ApiFactory.spot(1).success(function(spots) {
+	ApiFactory.spots().success(function(spots) {
 		spots.forEach(function(e){
 			e.message = '<b>'+ e.name +'</b><br/>'+ e.Type.name +'<br/><a ui-toggle="uiSidebarRight" href="javascript:void(0);">Mais informações</a>';
 			e.layer="spots";

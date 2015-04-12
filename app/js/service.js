@@ -21,6 +21,14 @@ angular.module('DescarteOrg.services', [])
 		return $http.get(URL_API + '/material/');
 	};
 
+	factory.situations = function() {
+		return $http.get(URL_API + '/situation/');
+	};
+
+	factory.discard = function(discard) {
+		return $http.post(URL_API + '/discard/', discard);
+	};
+
 	return factory;
 }])
 .service('FiltroService',function(ApiFactory){
