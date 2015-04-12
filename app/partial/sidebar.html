@@ -10,8 +10,8 @@
 				</div>
 				<div class="row">
 					<h4>Status</h4>
-					<div ng-repeat="(id, type) in FiltroService.filtrosType">
-						<label><input type="checkbox" ng-model="type.check" ng-change="filterChanged()"/> {{type.name}}</label>
+					<div ng-repeat="(id, situation) in FiltroService.filtrosSituation">
+						<label><input type="checkbox" ng-model="situation.check" ng-change="filterChanged()"/> {{situation.name}}</label>
 					</div>
 				</div>
 				<div class="row">

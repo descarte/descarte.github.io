@@ -7,4 +7,17 @@
 				 defaults = "defaults">
 		</leaflet>
 	</div>
+	<div class="leaflet-bottom leaflet-right" style="margin-bottom: 20px;">
+		<div class="legend leaflet-control">Legenda <div class="legendcircle"></div>
+		<span class="legend-header"><b>Tipo de Coleta</b></span>
+		<div class="outline">
+			<i style="background:#7fc97f"></i>
+		</div>
+		<div ng-repeat="(id, type) in FiltroService.filtrosType">
+			<div class="info-label">{{type.name}}</div>
+			<div class="outline">
+				<img ng-src={{"/app/image/markers/"+id+".png"}} height="20%" width="20%">
+			</div>
+		</div>
+	</div>
 </div>

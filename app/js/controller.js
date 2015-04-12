@@ -43,10 +43,17 @@ angular.module('DescarteOrg.controllers', [])
 	  angular.forEach($scope.listaLocais,function(item){
 		$scope.locaisFiltrados[item.id+"s"]=estaSpotVisivel(item)?item:undefined;
 	  });
+	  angular.forEach($scope.listaDiscartes,function(item){
+		$scope.locaisFiltrados[item.id]=estaDiscartesVisivel(item)?item:undefined;
+	  });
 	}
 	function estaSpotVisivel(spot){
-		return spot.layer=="descartes"||($scope.FiltroService.filtrosType[spot.Type.id].check 
-		&& spot.Materials.filter(function(item){return $scope.FiltroService.filtrosMaterial[item.id].check;}).length>0)		;
+		return ($scope.FiltroService.filtrosType[spot.Type.id].check 
+		&& spot.Materials.filter(function(item){return $scope.FiltroService.filtrosMaterial[item.id].check;}).length>0);
+	};
+	function estaDiscartesVisivel(descarte){
+		return $scope.FiltroService.filtrosSituation[descarte.SituationId].check && 
+		descarte.Materials.filter(function(item){return $scope.FiltroService.filtrosMaterial[item.id].check;}).length>0;
 	};
 	
 	$scope.layers = {
@@ -102,14 +109,17 @@ angular.module('DescarteOrg.controllers', [])
 	}).error(function (error) {
 		console.log(error);
 	});
+	$scope.listaDiscartes = {};
 	ApiFactory.discards().success(function(spots) {
 		spots.forEach(function(e){
-			e.message = '<b>'+ e.name +'</b><br/><a ui-toggle="uiSidebarRight" href="javascript:void(0);">Mais informações</a>';
+			e.message = '<b>'+ e.title +'</b><br/><a ui-toggle="uiSidebarRight" href="javascript:void(0);">Mais informações</a>';
 			e.layer="descartes";
 			e.icon = {
 				iconUrl: iconePath+"disposal.png"
 			};
-			$scope.locaisFiltrados[e.id] = e; 
+			e.MarkerType = 'descarte';
+			$scope.locaisFiltrados[e.id] = e;
+			$scope.listaDiscartes[e.id] = e; 
 		});
 	}).error(function (error) {
 		console.log(error);
@@ -122,7 +132,7 @@ angular.module('DescarteOrg.controllers', [])
 		$scope.layers.overlays.descartes.visible=n;
 	})
 	$scope.$on('leafletDirectiveMarker.click', function(e, args) {
-		$rootScope.$broadcast('detail-id', { spot: $scope.listaLocais[args.markerName] });
+		$rootScope.$broadcast('detail-id', { spot: $scope.locaisFiltrados[args.markerName] });
 	});
 
 
