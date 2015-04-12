@@ -1,10 +1,29 @@
 <div ng-controller="SidebarRightController">
-	<div class="scrollable" ng-show="operation=='detail'">
+	<div class="scrollable" ng-show="operation=='detail' && spot.MarkerType=='spot'">
 		<h1><small>Local de coleta:</small> {{spot.name}}</h1>
 		<div class="scrollable-content">
 			<p>Tipo: <strong>{{spot.Type.name}}</strong></p>
 			<p>Endereço: {{address}}</p>
 
+			<h2>Materiais:</h2>
+			<ul>
+				<li ng-repeat="material in spot.Materials">{{material.name}}</li>
+			</ul>
+		</div>
+		<div class="scrollable-footer">
+			<div class="list-group" ui-turn-off='uiSidebarRight'>
+				<a class="list-group-item" href="#/"><i class="fa fa-chevron-left pull-left"></i> Voltar</a>
+			</div>
+		</div>
+	</div>
+	<div class="scrollable" ng-show="operation=='detail' && spot.MarkerType!='spot'">
+		<h1>{{spot.title}}</h1>
+		<div class="scrollable-content">
+			<p>Status: <strong>{{spot.Situation.name}}</strong></p>
+			<p>Nome: <strong>{{spot.name}}</strong></p>
+			<p>Email: <strong>{{spot.email}}</strong></p>
+			<p>Observação: {{spot.description}}</p>
+			<p>Endereço: {{address}}</p>
 			<h2>Materiais:</h2>
 			<ul>
 				<li ng-repeat="material in spot.Materials">{{material.name}}</li>
