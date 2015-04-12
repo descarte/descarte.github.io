@@ -29,7 +29,8 @@ angular.module('DescarteOrg.controllers', [])
 	$scope.center = {
 		lat: -30.0330600,
 		lng: -51.2300000,
-		zoom: 11
+    zoom: 11,
+		maxZoom: 11
 	};
 	
 	$scope.defaults = {
@@ -43,8 +44,10 @@ angular.module('DescarteOrg.controllers', [])
 
 	function filtrarLista(){
 		angular.forEach($scope.listaLocais,function(item){
-			$scope.locaisFiltrados[item.id]=estaSpotVisivel(item)?
-				item:undefined;
+      $scope.locaisFiltrados[item.id] = {};
+      if(estaSpotVisivel(item)){
+			   $scope.locaisFiltrados[item.id]=item;
+      }
 		});
 	}
 	function estaSpotVisivel(spot){
