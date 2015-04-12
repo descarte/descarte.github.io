@@ -41,7 +41,10 @@ angular.module('DescarteOrg.controllers', [])
 
 	function filtrarLista(){
 	  angular.forEach($scope.listaLocais,function(item){
-		$scope.locaisFiltrados[item.id+"s"]=estaSpotVisivel(item)?item:undefined;
+	  	$scope.locaisFiltrados[item.id+"s"] = {};
+	  	if(estaSpotVisivel(item)){
+			$scope.locaisFiltrados[item.id+"s"]=item;
+		}
 	  });
 	  angular.forEach($scope.listaDiscartes,function(item){
 		$scope.locaisFiltrados[item.id]=estaDiscartesVisivel(item)?item:undefined;
@@ -112,7 +115,7 @@ angular.module('DescarteOrg.controllers', [])
 	$scope.listaDiscartes = {};
 	ApiFactory.discards().success(function(spots) {
 		spots.forEach(function(e){
-			e.message = '<b>'+ e.title +'</b><br/><a ui-toggle="uiSidebarRight" href="javascript:void(0);">Mais informações</a>';
+			e.message = '<b>'+ e.title +'</b><br/>'+ e.name +'<br/><a ui-toggle="uiSidebarRight" href="javascript:void(0);">Mais informações</a>';
 			e.layer="descartes";
 			e.icon = {
 				iconUrl: iconePath+"disposal.png"
