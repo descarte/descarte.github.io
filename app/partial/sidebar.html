@@ -11,26 +11,24 @@
 				<div class="row">
 					<h4>Status</h4>
 					<div ng-repeat="(id, type) in FiltroService.filtrosType">
-						<label><input type="checkbox" ng-model="type.check" /> {{type.name}}</label>
+						<label><input type="checkbox" ng-model="type.check" ng-change="filterChanged()"/> {{type.name}}</label>
 					</div>
 				</div>
 				<div class="row">
 					<h4>Tipo de coleta</h4>
 					<div ng-repeat="(id, type) in FiltroService.filtrosType">
-						<label><input type="checkbox" ng-model="type.check" /> {{type.name}}</label>
+						<label><input type="checkbox" ng-model="type.check" ng-change="filterChanged()"/> {{type.name}}</label>
 					</div>
 				</div>
 			</div>
 			<div class="column">
 				<h4>Material</h4>
 				<div ng-repeat="(id, material) in FiltroService.filtrosMaterial">
-					<label><input type="checkbox" ng-model="material.check"/> {{material.name}}</label>
+					<label><input type="checkbox" ng-model="material.check" ng-change="filterChanged()"/> {{material.name}}</label>
 				</div>
 			</div>
 		</div>
-
-		<button class="btn btn-primary btn-block btn-lg" ui-turn-off='uiSidebarLeft' ng-click="filterChanged()">Filtrar</button><br/>
-
+		<!--<button class="btn btn-primary btn-block btn-lg" ui-turn-off='uiSidebarLeft' ng-click="filterChanged()">Filtrar</button><br/>-->
 		<div ui-turn-off='uiSidebarLeft'>
 			<a class="btn btn-default btn-lg btn-block" ui-toggle="uiSidebarRight" ui-toggle="uiSidebarLeft" ng-click="new()"><i class="fa fa-plus"></i> Novo descarte</a>
 		</div>

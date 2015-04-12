@@ -45,9 +45,8 @@ angular.module('DescarteOrg.controllers', [])
 	  });
 	}
 	function estaSpotVisivel(spot){
-		return $scope.FiltroService.filtrosType[spot.Type.id].check 
-		&& spot.Materials.filter(function(item){return $scope.FiltroService.filtrosMaterial[item.id].check;}).length>0
-		;
+		return spot.layer=="descartes"||($scope.FiltroService.filtrosType[spot.Type.id].check 
+		&& spot.Materials.filter(function(item){return $scope.FiltroService.filtrosMaterial[item.id].check;}).length>0)		;
 	};
 	
 	$scope.layers = {
